@@ -1,22 +1,9 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import { LoaderOne } from './ui/loader'
 
 const Main = () => {
-  const [loading, setLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000) 
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <div className="flex w-full pt-25 justify-center items-center">
-      {loading ? (
-        <div className="flex flex-col h-[500px] justify-center ">
-          <LoaderOne/>
-        </div>
-      ) : (
         <div className="flex flex-col max-w-4xl px-6 text-center">
           <div className="text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-700 mb-1">
             Starter&apos;s Snippet&apos;s
@@ -54,7 +41,6 @@ const Main = () => {
 
 
         </div>
-      )}
     </div>
   )
 }

@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
+
+import { site } from "./lib/site"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  async redirects() {
+    return [
+      // starters.harssh.xyz/extension -> the Marketplace listing
+      { source: "/extension", destination: site.marketplace, permanent: false },
+    ]
+  },
+}
 
-export default nextConfig;
+export default nextConfig

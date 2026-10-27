@@ -1,30 +1,41 @@
-import type { Metadata } from "next"
-import { Bricolage_Grotesque, Geist } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
+
+import { ThemeProvider } from "@/components/theme-provider"
+import { site } from "@/lib/site"
 
 import "./globals.css"
 
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-})
-
-const display = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
-  title: "Starter's Snippets",
-  description:
-    "Generate starter files and boilerplate code for your projects, and skip the repetitive setup.",
+  title: site.name,
+  description: site.description,
+  openGraph: {
+    title: site.name,
+    description: site.description,
+    type: "website",
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 }
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${body.variable} ${display.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   )
 }

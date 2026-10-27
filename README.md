@@ -98,4 +98,4 @@ The easiest way is [Vercel](https://vercel.com/new). Import the repo and deploy 
 
 ## Author
 
-Built by [@harshdev03](https://github.com/harshdev03).
+Built by [@harssshh03](https://github.com/harssshh03).
